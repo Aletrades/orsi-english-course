@@ -14,18 +14,19 @@
         :root {
             --white: #FFFFFF;
             --off-white: #FAFAF8;
-            --warm-bg: #FDF9F3;
-            --gold: #C8A951;
-            --gold-dark: #B89A42;
-            --gold-light: #F5EDDA;
+            --warm-bg: #FFF8F0;
+            --cta: #F97316;
+            --cta-dark: #EA580C;
+            --cta-light: #FFF1E6;
             --charcoal: #2C2C2C;
             --dark: #1A1A1A;
             --text: #333333;
-            --text-light: #666666;
-            --text-muted: #999999;
+            --text-light: #555555;
+            --text-muted: #888888;
             --border: #E8E5E0;
             --green: #16A34A;
             --green-light: #DCFCE7;
+            --gold: #D4A843;
             --whatsapp: #25D366;
             --whatsapp-dark: #1DA851;
             --error: #D64545;
@@ -69,7 +70,7 @@
         }
 
         .urgency-bar .spots {
-            color: var(--gold);
+            color: var(--cta);
             font-weight: 800;
         }
 
@@ -99,9 +100,9 @@
         }
 
         .hero h1 .highlight {
-            color: var(--gold-dark);
+            color: var(--cta);
             text-decoration: underline;
-            text-decoration-color: var(--gold);
+            text-decoration-color: var(--cta);
             text-underline-offset: 4px;
         }
 
@@ -113,13 +114,43 @@
             margin: 0 auto;
         }
 
+        .hero-cta {
+            display: inline-block;
+            background: var(--cta);
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-cta:hover {
+            background: var(--cta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(249,115,22,0.4);
+        }
+
+        .hero-cta-sub {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
         /* --- FOMO banner --- */
         .fomo-banner {
             display: flex;
             align-items: center;
             gap: 14px;
             background: linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 100%);
-            border: 1px solid var(--gold);
+            border: 1px solid rgba(249,115,22,0.3);
             border-radius: 14px;
             padding: 18px 20px;
             margin: 0 0 24px;
@@ -137,7 +168,7 @@
         }
 
         .fomo-text strong {
-            color: var(--gold);
+            color: var(--cta);
             font-size: 0.92rem;
             line-height: 1.35;
         }
@@ -278,14 +309,14 @@
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
-            border: 3px solid var(--gold-light);
+            border: 3px solid var(--cta-light);
         }
 
         .instructor-photo-placeholder {
             width: 72px;
             height: 72px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            background: linear-gradient(135deg, var(--cta), var(--cta-dark));
             color: var(--white);
             display: flex;
             align-items: center;
@@ -321,7 +352,7 @@
         }
 
         .testimonial-stars {
-            color: var(--gold);
+            color: #FBBF24;
             font-size: 0.9rem;
             letter-spacing: 2px;
             margin-bottom: 8px;
@@ -399,9 +430,9 @@
         }
 
         .detail-pill-free {
-            background: var(--gold);
+            background: var(--cta);
             color: var(--white);
-            border-color: var(--gold);
+            border-color: var(--cta);
             font-weight: 700;
         }
 
@@ -454,10 +485,10 @@
         /* --- Form card --- */
         .form-card {
             background: var(--white);
-            border: 2px solid var(--gold);
+            border: 2px solid var(--cta);
             border-radius: 16px;
             padding: 32px 24px;
-            box-shadow: 0 8px 32px rgba(200,169,81,0.15);
+            box-shadow: 0 8px 32px rgba(249,115,22,0.12);
             position: relative;
         }
 
@@ -466,7 +497,7 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gold);
+            background: var(--cta);
             color: var(--white);
             font-size: 0.72rem;
             font-weight: 700;
@@ -517,8 +548,8 @@
         }
 
         .form-group input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(200,169,81,0.12);
+            border-color: var(--cta);
+            box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
             background: var(--white);
         }
 
@@ -538,7 +569,7 @@
         .btn-submit {
             width: 100%;
             padding: 16px;
-            background: var(--gold);
+            background: var(--cta);
             color: var(--white);
             border: none;
             border-radius: 10px;
@@ -549,13 +580,13 @@
             transition: all 0.3s;
             margin-top: 6px;
             position: relative;
-            box-shadow: 0 4px 16px rgba(200,169,81,0.35);
+            box-shadow: 0 4px 16px rgba(249,115,22,0.35);
         }
 
         .btn-submit:hover:not(:disabled) {
-            background: var(--gold-dark);
+            background: var(--cta-dark);
             transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(200,169,81,0.4);
+            box-shadow: 0 6px 24px rgba(249,115,22,0.4);
         }
 
         .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
@@ -699,8 +730,8 @@
 
         .success-container .step-label {
             display: inline-block;
-            background: var(--gold-light);
-            color: var(--gold-dark);
+            background: var(--cta-light);
+            color: var(--cta-dark);
             font-size: 0.75rem;
             font-weight: 700;
             padding: 4px 12px;
@@ -778,6 +809,8 @@
             <span class="hero-badge">Clase 100% Gratis</span>
             <h1>Deja de Quedarte<br>Callado en <span class="highlight">Inglés</span></h1>
             <p class="hero-sub">En 1 hora vas a aprender frases reales que puedes usar desde mañana — en el trabajo, con doctores, en la escuela de tus hijos.</p>
+            <a href="#formContainer" class="hero-cta">Quiero Mi Clase Gratis →</a>
+            <span class="hero-cta-sub">Solo quedan pocos cupos — es 100% gratis</span>
         </div>
 
         <!-- FOMO banner -->
