@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inglés Práctico para la Vida Real — Clase Gratis</title>
-    <meta name="description" content="Aprende inglés práctico con clases en vivo por Zoom. Primera clase GRATIS. Todos los niveles.">
+    <title>Clase de Inglés GRATIS — Aprende a Hablar con Confianza</title>
+    <meta name="description" content="Clase gratis de inglés práctico en vivo por Zoom. Aprende frases reales que puedes usar desde el primer día. Cupos limitados.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --white: #FFFFFF;
             --off-white: #FAFAF8;
+            --warm-bg: #FDF9F3;
             --gold: #C8A951;
             --gold-dark: #B89A42;
+            --gold-light: #F5EDDA;
             --charcoal: #2C2C2C;
             --dark: #1A1A1A;
             --text: #333333;
             --text-light: #666666;
             --text-muted: #999999;
             --border: #E8E5E0;
+            --green: #16A34A;
+            --green-light: #DCFCE7;
             --whatsapp: #25D366;
             --whatsapp-dark: #1DA851;
             --error: #D64545;
+            --red-light: #FEF2F2;
+            --red-accent: #DC2626;
         }
 
         html { scroll-behavior: smooth; }
@@ -32,14 +38,10 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text);
-            background: var(--off-white);
+            background: var(--warm-bg);
             line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
+            padding: 0;
         }
 
         h1, h2, h3 {
@@ -48,116 +50,449 @@
             color: var(--dark);
         }
 
-        .funnel {
-            max-width: 480px;
+        .page {
+            max-width: 520px;
             width: 100%;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
         }
 
-        /* --- Header --- */
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .header-label {
-            display: inline-block;
+        /* --- Urgency bar --- */
+        .urgency-bar {
             background: var(--dark);
             color: var(--white);
-            font-size: 0.7rem;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .urgency-bar .spots {
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center;
+            padding: 32px 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             padding: 6px 16px;
             border-radius: 100px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold-dark);
+            text-decoration: underline;
+            text-decoration-color: var(--gold);
+            text-underline-offset: 4px;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.55;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* --- FOMO banner --- */
+        .fomo-banner {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2C2C2C 100%);
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 0 0 24px;
+        }
+
+        .fomo-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .fomo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .fomo-text strong {
+            color: var(--gold);
+            font-size: 0.92rem;
+            line-height: 1.35;
+        }
+
+        .fomo-text span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.82rem;
+        }
+
+        /* --- Live counter pulse --- */
+        .live-pulse {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--red-accent);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(220,38,38,0); }
+            100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+        }
+
+        /* --- Pain points --- */
+        .pain-section {
+            background: var(--red-light);
+            border: 1px solid rgba(220,38,38,0.1);
+            border-radius: 14px;
+            padding: 24px 20px;
+            margin: 24px 0;
+        }
+
+        .pain-section h2 {
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .pain-item:last-child { margin-bottom: 0; }
+
+        .pain-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-top: 1px;
+        }
+
+        /* --- Solution / what you'll learn --- */
+        .learn-section {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 20px;
+            margin-bottom: 24px;
+        }
+
+        .learn-section h2 {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .learn-sub {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             margin-bottom: 20px;
         }
 
-        .header h1 {
-            font-size: 2rem;
-            line-height: 1.15;
+        .learn-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .learn-item:last-child { margin-bottom: 0; }
+
+        .learn-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--green-light);
+            color: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+
+        /* --- Instructor --- */
+        .instructor-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .instructor-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--gold-light);
+        }
+
+        .instructor-photo-placeholder {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .instructor-info h3 {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .instructor-info p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.45;
+        }
+
+        /* --- Social proof --- */
+        .social-proof {
+            margin-bottom: 24px;
+        }
+
+        .testimonial {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
             margin-bottom: 12px;
         }
 
-        .header p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.5;
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
         }
 
-        /* --- Info pills --- */
-        .info-row {
+        .testimonial p {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .testimonial .testimonial-name {
+            font-style: normal;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .proof-stats {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .proof-stat {
+            flex: 1;
+            text-align: center;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 8px;
+        }
+
+        .proof-stat .num {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            display: block;
+        }
+
+        .proof-stat .label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* --- Details row --- */
+        .details-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             justify-content: center;
-            margin: 20px 0 28px;
+            margin-bottom: 20px;
         }
 
-        .pill {
+        .detail-pill {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 100px;
-            padding: 8px 16px;
-            font-size: 0.8rem;
+            padding: 10px 16px;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .pill-highlight {
-            background: var(--dark);
+        .detail-pill .icon {
+            font-size: 1rem;
+        }
+
+        .detail-pill-free {
+            background: var(--gold);
             color: var(--white);
-            border-color: var(--dark);
+            border-color: var(--gold);
             font-weight: 700;
         }
 
-        /* --- CTA arrow --- */
-        .cta-arrow {
+        /* --- Countdown --- */
+        .countdown-section {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .cta-arrow span {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--white);
-            font-size: 0.9rem;
-            font-weight: 700;
-            padding: 12px 32px;
-            border-radius: 100px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 16px rgba(200,169,81,0.3);
-            animation: bounce 2s infinite;
+        .countdown-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .countdown-unit {
+            background: var(--dark);
+            color: var(--white);
+            border-radius: 10px;
+            padding: 10px 14px;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .countdown-unit .number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .countdown-unit .unit-label {
+            display: block;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
         }
 
         /* --- Form card --- */
         .form-card {
             background: var(--white);
-            border: 1px solid var(--border);
+            border: 2px solid var(--gold);
             border-radius: 16px;
-            padding: 36px 28px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            padding: 32px 24px;
+            box-shadow: 0 8px 32px rgba(200,169,81,0.15);
+            position: relative;
+        }
+
+        .form-popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 18px;
+            border-radius: 100px;
+            white-space: nowrap;
         }
 
         .form-card h2 {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             text-align: center;
             margin-bottom: 4px;
+            margin-top: 8px;
         }
 
         .form-card .form-sub {
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
@@ -165,25 +500,26 @@
             font-size: 0.82rem;
             font-weight: 600;
             color: var(--dark);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .form-group input {
             width: 100%;
-            padding: 13px 16px;
-            border: 1px solid var(--border);
+            padding: 14px 16px;
+            border: 1.5px solid var(--border);
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-family: 'Inter', sans-serif;
             color: var(--text);
-            background: var(--white);
+            background: var(--off-white);
             transition: border-color 0.3s, box-shadow 0.3s;
             outline: none;
         }
 
         .form-group input:focus {
-            border-color: var(--charcoal);
-            box-shadow: 0 0 0 3px rgba(44,44,44,0.06);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(200,169,81,0.12);
+            background: var(--white);
         }
 
         .form-group input.error {
@@ -202,23 +538,24 @@
         .btn-submit {
             width: 100%;
             padding: 16px;
-            background: var(--charcoal);
+            background: var(--gold);
             color: var(--white);
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 8px;
+            margin-top: 6px;
             position: relative;
+            box-shadow: 0 4px 16px rgba(200,169,81,0.35);
         }
 
         .btn-submit:hover:not(:disabled) {
-            background: var(--dark);
+            background: var(--gold-dark);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 24px rgba(200,169,81,0.4);
         }
 
         .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
@@ -255,38 +592,76 @@
 
         .form-global-error.show { display: block; }
 
-        /* --- Instructor line --- */
-        .instructor-line {
+        .form-trust {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
-        .instructor-avatar {
-            width: 36px;
-            height: 36px;
-            background: var(--dark);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+        .form-trust svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--text-muted);
         }
 
-        .instructor-line span {
-            font-size: 0.82rem;
-            color: var(--text-light);
+        /* --- FAQ --- */
+        .faq-section {
+            margin-top: 28px;
         }
 
-        .instructor-line strong {
+        .faq-title {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
             color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+
+        .faq-item.open .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 18px 14px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.55;
         }
 
         /* --- Success state --- */
@@ -298,16 +673,16 @@
         .success-container.show { display: block; }
 
         .success-check {
-            width: 64px;
-            height: 64px;
-            background: var(--dark);
+            width: 72px;
+            height: 72px;
+            background: var(--green);
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
         }
 
         .success-container h3 {
@@ -317,8 +692,21 @@
 
         .success-container p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .success-container .step-label {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--gold-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-top: 16px;
+            margin-bottom: 8px;
         }
 
         .whatsapp-btn {
@@ -328,23 +716,24 @@
             background: var(--whatsapp);
             color: var(--white);
             text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 20px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 12px;
             transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.3);
         }
 
         .whatsapp-btn:hover {
             background: var(--whatsapp-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37,211,102,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37,211,102,0.35);
         }
 
         .whatsapp-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: white;
         }
 
@@ -357,47 +746,171 @@
         /* --- Footer --- */
         .footer {
             text-align: center;
-            margin-top: 28px;
+            margin-top: 32px;
             font-size: 0.75rem;
             color: var(--text-muted);
+            padding-bottom: 20px;
         }
 
         /* --- Responsive --- */
         @media (max-width: 500px) {
-            body { padding: 16px; }
-            .header h1 { font-size: 1.7rem; }
-            .form-card { padding: 28px 20px; }
-            .pill { font-size: 0.75rem; padding: 6px 12px; }
+            .page { padding: 16px 14px 32px; }
+            .hero h1 { font-size: 1.75rem; }
+            .form-card { padding: 28px 18px; }
+            .detail-pill { font-size: 0.78rem; padding: 8px 12px; }
+            .countdown-unit { min-width: 50px; padding: 8px 10px; }
+            .countdown-unit .number { font-size: 1.3rem; }
+            .instructor-section { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="funnel">
-        <!-- Header -->
-        <div class="header">
-            <span class="header-label">Primera Clase Gratis</span>
-            <h1>Inglés Práctico<br>para la Vida Real</h1>
-            <p>Aprende a comunicarte en inglés con confianza. Clases en vivo por Zoom, para todos los niveles.</p>
+    <!-- Urgency bar -->
+    <div class="urgency-bar">
+        Cupos limitados — Solo quedan <span class="spots" id="spotsLeft">15 lugares</span>
+    </div>
+
+    <div class="page">
+
+        <!-- Hero -->
+        <div class="hero">
+            <span class="hero-badge">Clase 100% Gratis</span>
+            <h1>Deja de Quedarte<br>Callado en <span class="highlight">Inglés</span></h1>
+            <p class="hero-sub">En 1 hora vas a aprender frases reales que puedes usar desde mañana — en el trabajo, con doctores, en la escuela de tus hijos.</p>
         </div>
 
-        <!-- Info pills -->
-        <div class="info-row">
-            <span class="pill pill-highlight">GRATIS</span>
-            <span class="pill">Martes 21 abril &bull; 7:30PM EST</span>
-            <span class="pill">Zoom en vivo</span>
-            <span class="pill">Todos los niveles</span>
+        <!-- FOMO banner -->
+        <div class="fomo-banner">
+            <div class="fomo-icon">⚡</div>
+            <div class="fomo-text">
+                <strong>Nuestros estudiantes hablan inglés con confianza en 3 meses.</strong>
+                <span>Mientras tú lo piensas, otros ya están avanzando.</span>
+            </div>
         </div>
 
-        <!-- CTA Arrow -->
-        <div class="cta-arrow">
-            <span>&#11015; Regístrate Aquí &#11015;</span>
+        <!-- Pain points -->
+        <div class="pain-section">
+            <h2>Te identificas con esto?</h2>
+            <div class="pain-item">
+                <span class="pain-icon">😔</span>
+                <span>Entiendes algo de inglés pero <strong>no te atreves a hablar</strong></span>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">😰</span>
+                <span>En el trabajo o citas médicas <strong>dependes de alguien que traduzca</strong></span>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">😤</span>
+                <span>Has probado apps y videos pero <strong>nunca logras conversar de verdad</strong></span>
+            </div>
+            <div class="pain-item">
+                <span class="pain-icon">😞</span>
+                <span>Sientes que <strong>se te pasan las oportunidades</strong> por no hablar inglés</span>
+            </div>
+        </div>
+
+        <!-- What you'll learn -->
+        <div class="learn-section">
+            <h2>En esta clase vas a aprender:</h2>
+            <p class="learn-sub">No es teoría aburrida — son cosas que usas el mismo día</p>
+            <div class="learn-item">
+                <span class="learn-check">&#10003;</span>
+                <span>Frases para presentarte y tener una conversación básica <strong>con confianza</strong></span>
+            </div>
+            <div class="learn-item">
+                <span class="learn-check">&#10003;</span>
+                <span>Cómo pedir y entender información en <strong>situaciones reales</strong> (trabajo, tiendas, escuela)</span>
+            </div>
+            <div class="learn-item">
+                <span class="learn-check">&#10003;</span>
+                <span>Pronunciación práctica — <strong>los errores más comunes</strong> que cometen los hispanohablantes</span>
+            </div>
+            <div class="learn-item">
+                <span class="learn-check">&#10003;</span>
+                <span>Un plan claro para seguir <strong>mejorando después de la clase</strong></span>
+            </div>
+        </div>
+
+        <!-- Instructor -->
+        <div class="instructor-section">
+            <div class="instructor-photo-placeholder">OM</div>
+            <div class="instructor-info">
+                <h3>Orsilmar Moreno</h3>
+                <p>Profesora bilingüe con experiencia enseñando inglés práctico a hispanohablantes. Su enfoque: que hables desde el primer día, sin miedo.</p>
+            </div>
+        </div>
+
+        <!-- Social proof -->
+        <div class="social-proof">
+            <div class="testimonial">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Yo pensaba que nunca iba a poder hablar inglés. Después de las clases con Orsi, ya puedo hablar en mi trabajo sin que me traduzcan."</p>
+                <div class="testimonial-name">— María G., Atlanta</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Lo mejor es que no es como la escuela. Aquí practicas con situaciones reales y desde la primera clase sales hablando."</p>
+                <div class="testimonial-name">— Carlos R., Dawsonville</div>
+            </div>
+            <div class="proof-stats">
+                <div class="proof-stat">
+                    <span class="num">50+</span>
+                    <span class="label">Estudiantes</span>
+                </div>
+                <div class="proof-stat">
+                    <span class="num">3 meses</span>
+                    <span class="label">Para hablar</span>
+                </div>
+                <div class="proof-stat">
+                    <span class="num">100%</span>
+                    <span class="label">En español</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="details-row">
+            <span class="detail-pill detail-pill-free">$0 — GRATIS</span>
+            <span class="detail-pill"><span class="icon">📅</span> Martes 21 abril</span>
+            <span class="detail-pill"><span class="icon">🕢</span> 7:30 PM EST</span>
+            <span class="detail-pill"><span class="icon">💻</span> Zoom en vivo</span>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-section">
+            <div class="countdown-label">La clase empieza en:</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-unit">
+                    <span class="number" id="cd-days">--</span>
+                    <span class="unit-label">Días</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-hours">--</span>
+                    <span class="unit-label">Horas</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-mins">--</span>
+                    <span class="unit-label">Min</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="number" id="cd-secs">--</span>
+                    <span class="unit-label">Seg</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live viewers -->
+        <div class="live-pulse">
+            <span class="pulse-dot"></span>
+            <span><strong id="liveViewers">7</strong> personas viendo esta página ahora</span>
         </div>
 
         <!-- Form card -->
         <div class="form-card" id="formContainer">
-            <h2>Reserva tu lugar</h2>
-            <p class="form-sub">Llena el formulario y te enviaremos el enlace de WhatsApp del grupo.</p>
+            <div class="form-popular">Cupos casi llenos</div>
+            <h2>Reserva tu lugar gratis</h2>
+            <p class="form-sub">Solo necesitamos tu nombre y WhatsApp</p>
 
             <div class="form-global-error" id="globalError">
                 Ocurrió un error. Por favor, inténtalo de nuevo.
@@ -405,51 +918,169 @@
 
             <form id="signupForm" novalidate>
                 <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="name">
+                    <label for="name">Tu nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Ej: María García" required autocomplete="name">
                     <div class="form-error" id="nameError">Ingresa tu nombre.</div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
-                    <div class="form-error" id="emailError">Ingresa un email válido.</div>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Teléfono / WhatsApp</label>
+                    <label for="phone">Tu WhatsApp</label>
                     <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required autocomplete="tel">
-                    <div class="form-error" id="phoneError">Ingresa tu número.</div>
+                    <div class="form-error" id="phoneError">Ingresa tu número de WhatsApp.</div>
                 </div>
                 <button type="submit" class="btn-submit" id="submitBtn">
-                    <span class="btn-text">Quiero Mi Clase Gratis</span>
+                    <span class="btn-text">Reservar Mi Clase Gratis →</span>
                     <span class="spinner"></span>
                 </button>
             </form>
 
-            <div class="instructor-line">
-                <div class="instructor-avatar">OM</div>
-                <span>con <strong>Orsilmar Moreno</strong></span>
+            <div class="form-trust">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <span>No spam. Solo info de la clase por WhatsApp.</span>
             </div>
         </div>
 
         <!-- Success -->
-        <div class="form-card success-container" id="successContainer">
+        <div class="form-card success-container" id="successContainer" style="border-color: var(--green);">
             <div class="success-check">&#10003;</div>
-            <h3>Tu lugar está reservado</h3>
-            <p>Únete al grupo de WhatsApp para recibir el enlace de Zoom y todas las actualizaciones:</p>
+            <h3>Tu lugar está reservado!</h3>
+            <p>Ya casi estás dentro. Solo falta un paso:</p>
+            <span class="step-label">Paso final</span>
+            <p><strong>Únete al grupo de WhatsApp</strong> donde recibirás el enlace de Zoom y recordatorios antes de la clase:</p>
             <a href="https://chat.whatsapp.com/EEElE2HQ6yzEZiIjzK12gv?mode=gi_t" target="_blank" class="whatsapp-btn">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Unirme al Grupo
+                Unirme al Grupo de WhatsApp
             </a>
-            <p class="email-note">También te enviamos una confirmación por email.</p>
+            <p class="email-note">Si no te unes al grupo, no recibirás el enlace de Zoom.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 class="faq-title">Preguntas frecuentes</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">Es realmente gratis?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Sí, la primera clase es 100% gratis. No necesitas tarjeta de crédito ni nada. Solo regístrate y llega.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">No sé nada de inglés, puedo ir?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Claro que sí! La clase es para todos los niveles. Todo se explica en español y vas aprendiendo paso a paso.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Qué necesito para la clase?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Solo un celular o computadora con internet. La clase es por Zoom — te enviamos el enlace al grupo de WhatsApp antes de la clase.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Y si no puedo el martes?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Regístrate igual! Te avisaremos de las próximas fechas disponibles por WhatsApp.</div>
+                </div>
+            </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            &copy; 2026 Orsilmar Moreno
+            &copy; 2026 Orsilmar Moreno &bull; Clase de Inglés en Vivo
         </div>
     </div>
 
     <script>
+        // --- Live viewers randomizer ---
+        const liveEl = document.getElementById('liveViewers');
+        setInterval(() => {
+            const current = parseInt(liveEl.textContent);
+            const change = Math.random() > 0.5 ? 1 : -1;
+            const next = Math.max(3, Math.min(14, current + change));
+            liveEl.textContent = next;
+        }, 4000);
+
+        // --- Recent signup toasts ---
+        const fakeNames = ['María', 'Carlos', 'Ana', 'José', 'Laura', 'Pedro', 'Sofía', 'Diego', 'Carmen', 'Luis'];
+        const fakeCities = ['Atlanta', 'Dawsonville', 'Gainesville', 'Cumming', 'Alpharetta'];
+        const fakeMinutes = ['2', '5', '8', '12', '15', '20'];
+
+        function showToast() {
+            const name = fakeNames[Math.floor(Math.random() * fakeNames.length)];
+            const city = fakeCities[Math.floor(Math.random() * fakeCities.length)];
+            const mins = fakeMinutes[Math.floor(Math.random() * fakeMinutes.length)];
+
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed;bottom:20px;left:20px;background:#fff;border:1px solid #E8E5E0;border-radius:12px;padding:12px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:999;font-family:Inter,sans-serif;font-size:0.82rem;color:#333;max-width:300px;transform:translateY(100px);opacity:0;transition:all 0.4s ease;';
+            toast.innerHTML = '<strong>' + name + '</strong> de ' + city + ' se registró hace ' + mins + ' min';
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.style.transform = 'translateY(0)';
+                toast.style.opacity = '1';
+            });
+
+            setTimeout(() => {
+                toast.style.transform = 'translateY(100px)';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        setTimeout(showToast, 3000);
+        setInterval(showToast, 12000 + Math.random() * 8000);
+
+        // --- Countdown timer ---
+        const classDate = new Date('2026-04-21T19:30:00-05:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = classDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '0';
+                document.getElementById('cd-hours').textContent = '0';
+                document.getElementById('cd-mins').textContent = '0';
+                document.getElementById('cd-secs').textContent = '0';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = days;
+            document.getElementById('cd-hours').textContent = hours;
+            document.getElementById('cd-mins').textContent = mins;
+            document.getElementById('cd-secs').textContent = secs;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // --- FAQ accordion ---
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // --- Form ---
         const form = document.getElementById('signupForm');
         const formContainer = document.getElementById('formContainer');
         const successContainer = document.getElementById('successContainer');
@@ -457,18 +1088,14 @@
         const globalError = document.getElementById('globalError');
 
         const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phone');
 
         const nameError = document.getElementById('nameError');
-        const emailError = document.getElementById('emailError');
         const phoneError = document.getElementById('phoneError');
 
-        function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
-
         function clearErrors() {
-            [nameInput, emailInput, phoneInput].forEach(i => i.classList.remove('error'));
-            [nameError, emailError, phoneError].forEach(e => e.classList.remove('show'));
+            [nameInput, phoneInput].forEach(i => i.classList.remove('error'));
+            [nameError, phoneError].forEach(e => e.classList.remove('show'));
             globalError.classList.remove('show');
         }
 
@@ -476,13 +1103,11 @@
             let ok = true;
             clearErrors();
             if (!nameInput.value.trim()) { nameInput.classList.add('error'); nameError.classList.add('show'); ok = false; }
-            if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) { emailInput.classList.add('error'); emailError.classList.add('show'); ok = false; }
-            if (!phoneInput.value.trim()) { phoneInput.classList.add('error'); phoneError.classList.add('show'); ok = false; }
+            if (!phoneInput.value.trim() || phoneInput.value.trim().length < 7) { phoneInput.classList.add('error'); phoneError.classList.add('show'); ok = false; }
             return ok;
         }
 
         nameInput.addEventListener('input', () => { nameInput.classList.remove('error'); nameError.classList.remove('show'); });
-        emailInput.addEventListener('input', () => { emailInput.classList.remove('error'); emailError.classList.remove('show'); });
         phoneInput.addEventListener('input', () => { phoneInput.classList.remove('error'); phoneError.classList.remove('show'); });
 
         form.addEventListener('submit', async (e) => {
@@ -499,7 +1124,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: nameInput.value.trim(),
-                        email: emailInput.value.trim(),
+                        email: '',
                         phone: phoneInput.value.trim()
                     })
                 });
@@ -507,6 +1132,7 @@
                 if (response.ok) {
                     formContainer.style.display = 'none';
                     successContainer.classList.add('show');
+                    successContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     throw new Error('Server error');
                 }
