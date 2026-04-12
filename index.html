@@ -956,6 +956,10 @@
                     <div class="form-error" id="nameError">Ingresa tu nombre.</div>
                 </div>
                 <div class="form-group">
+                    <label for="email">Email <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+                </div>
+                <div class="form-group">
                     <label for="phone">Tu WhatsApp</label>
                     <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required autocomplete="tel">
                     <div class="form-error" id="phoneError">Ingresa tu número de WhatsApp.</div>
@@ -1121,6 +1125,7 @@
         const globalError = document.getElementById('globalError');
 
         const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phone');
 
         const nameError = document.getElementById('nameError');
@@ -1157,7 +1162,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: nameInput.value.trim(),
-                        email: '',
+                        email: emailInput.value.trim(),
                         phone: phoneInput.value.trim()
                     })
                 });
